@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-OContainerEsc is a security and privacy tool from the OwlSec suite.
+OContainerEsc helps you harden your own containers by finding configurations that would let a workload break out to the host. It audits docker/podman inspect JSON, compose and Kubernetes manifests, or the container it is running in, and reports each risk with the escape path, a fix and the matching MITRE ATT&CK technique. It only audits and never attempts an escape.
 
 ---
 
 ## ✨ Features
 
-- Standalone executable, no Python installation needed.
+- Checks 17 escape vectors: privileged mode, CAP_SYS_ADMIN, hostPID/Net/IPC, docker.sock, device mounts, missing seccomp/AppArmor, /proc mounts and more
+- Scans docker/podman inspect JSON, docker-compose, Kubernetes manifests and Dockerfiles
+- Self-audit of the current environment: container detection, capabilities, mounts, cgroups and sensitive host paths
+- Graded findings with escape path, remediation and ATT&CK mapping (T1611 and related)
+- Escape-vector catalog with per-vector explanations and a vulnerable demo config generator
+- Reports in TXT / JSON / Markdown / CSV / SARIF; exits with code 3 on CRITICAL/HIGH findings
 
 ---
 
@@ -38,8 +43,14 @@ OContainerEsc is a security and privacy tool from the OwlSec suite.
 ## 🚀 Usage
 
 ```bash
-./OContainerEsc
+./OContainerEsc                              # interactive menu
+docker inspect mycontainer | ./OContainerEsc --scan -
+./OContainerEsc --manifest deployment.yaml
+./OContainerEsc --self
+./OContainerEsc --catalog
 ```
+
+Run `./OContainerEsc --help` for the full list of options.
 
 ---
 
