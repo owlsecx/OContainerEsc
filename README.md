@@ -67,3 +67,20 @@ This tool is part of the **OwlSec** suite — a collection of 275+ security and 
 Proprietary — © 2026 Owlsec LLC. All rights reserved.
 
 *Tools are distributed as pre-built executables. Source code is proprietary.*
+
+---
+
+## 🔍 Verification & Transparency
+
+This tool is closed-source. These files let you see exactly what is inside it,
+without the source:
+
+- [`SBOM.cdx.json`](SBOM.cdx.json) — CycloneDX inventory: SHA-256 of this
+  binary, the Go toolchain version it was built with, and every bundled
+  component with its exact version and license. Feed it to Grype, Trivy or
+  Dependency-Track to audit our dependencies for CVEs yourself.
+- [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) — the full license text
+  of every third-party component, extracted from this binary.
+
+Release signing, GPL compliance and vulnerability reporting:
+[**TRUST.md**](https://github.com/owlsecx/owl-os/blob/main/TRUST.md)
